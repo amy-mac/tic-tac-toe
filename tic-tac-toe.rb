@@ -1,3 +1,9 @@
+class OccupiedError < StandardError
+  def message
+    "That space has already been played."
+  end
+end
+
 class Board
   
   attr_accessor :line1, :line2, :line3, :won
@@ -10,11 +16,12 @@ class Board
   end
   
   def display
-    puts " #{@line1[0]} | #{@line1[1]} | #{@line1[2]}"
-    puts "-----------"
-    puts " #{@line2[0]} | #{@line2[1]} | #{@line2[2]}"
-    puts "-----------"
-    puts " #{@line3[0]} | #{@line3[1]} | #{@line3[2]}"
+    line_width = 60
+    puts "  #{@line1[0]} | #{@line1[1]} | #{@line1[2]}  ".center(60)
+    puts "-------------".center(60)
+    puts "  #{@line2[0]} | #{@line2[1]} | #{@line2[2]}  ".center(60)
+    puts "-------------".center(60)
+    puts "  #{@line3[0]} | #{@line3[1]} | #{@line3[2]}  ".center(60)
   end
   
   def winning
@@ -99,15 +106,18 @@ def new_game
   
   while play_game.won == false
     play_game.display
+    puts ''
+    
     if turn.even?
       current_player_sign = players.player1_sign
       current_player_name = players.player1
+    
     else
       current_player_sign = players.player2_sign
       current_player_name = players.player2
     end
     
-    puts "#{current_player_name} select your number"
+    puts "#{current_player_name}, select your space:"
     answer = gets.chomp.to_i
   
     case answer
@@ -132,12 +142,15 @@ def new_game
     end
     
     turn += 1
+    
     if turn == 9
       puts "It's a tie!"
       Process.exit(0)
+    
     else
       play_game.winning
     end
+  
   end
     
 end
