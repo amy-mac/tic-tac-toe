@@ -26,47 +26,36 @@ class Board
   
   def winning
     if (@line1 || @line2 || @line3) == (['X', 'X', 'X'] || ['O', 'O', 'O'])
-      puts "You won!"
       @won = true
     end
     if (@line1[0] == 'X') && (@line2[0] == 'X') && (@line3[0] == 'X')
-      puts 'You won!'
       @won = true
     end
     if (@line1[0] == 'O') && (@line2[0] == 'O') && (@line3[0] == 'O')
-      puts 'You won!'
       @won = true
     end
     if (@line1[1] == 'X') && (@line2[1] == 'X') && (@line3[1] == 'X') 
-      puts 'You won!'
       @won = true
     end
     if (@line1[1] == 'O') && (@line2[1] == 'O') && (@line3[1] == 'O')
-      puts 'You won!'
       @won = true
     end
     if (@line1[2] == 'X') && (@line2[2] == 'X') && (@line3[2] == 'X')
-      puts 'You won!'
       @won = true
     end
     if (@line1[2] == 'O') && (@line2[2] == 'O') && (@line3[2] == 'O')
-      puts 'You won!'
       @won = true
     end
     if (@line1[0] == 'X') && (@line2[1] == 'X') && (@line3[2] == 'X') 
-      puts 'You won!'
       @won = true
     end
     if (@line1[0] == 'O') && (@line2[1] == 'O') && (@line3[2] == 'O')
-      puts 'You won!'
       @won = true
     end
     if (@line1[2] == 'X') && (@line2[1] == 'X') && (@line3[0] == 'X') 
-      puts 'You won!'
       @won = true
     end
     if (@line1[2] == 'O') && (@line2[1] == 'O') && (@line3[0] == 'O')
-      puts 'You won!'
       @won = true
     end
   end
@@ -145,10 +134,17 @@ def new_game
     
     if turn == 9
       puts "It's a tie!"
+      play_game.display
+      puts "'The only winning move is not to play at all.' -War Games"
       Process.exit(0)
     
     else
       play_game.winning
+      if play_game.won == true
+        puts "Congratulations #{current_player_name}, you won!"
+        puts ''
+        play_game.display
+      end
     end
   
   end
