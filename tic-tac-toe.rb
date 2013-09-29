@@ -94,6 +94,7 @@ def new_game
   turn = 0
   
   while play_game.won == false
+    puts `clear`
     play_game.display
     puts ''
     
