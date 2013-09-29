@@ -84,10 +84,18 @@ end
 def new_game
   puts "What's Player 1's name?"
   player1 = gets.chomp
+  puts ''
   puts "What's Player 2's name?"
   player2 = gets.chomp
+  puts ''
   puts "Here is your game board:"
   puts ''
+  
+  if player1.empty?
+    player1 = 'Player 1'
+  elsif player2.empty?
+    player2 = 'Player 2'
+  end
   
   players = Players.new(player1, player2)
   play_game = Board.new
@@ -109,26 +117,32 @@ def new_game
     
     puts "#{current_player_name}, select your space:"
     answer = gets.chomp.to_i
+    
+    unless answer.zero?
   
-    case answer
-    when 1
-      play_game.line1[0] = current_player_sign
-    when 2
-      play_game.line1[1] = current_player_sign
-    when 3
-      play_game.line1[2] = current_player_sign
-    when 4
-      play_game.line2[0] = current_player_sign
-    when 5
-      play_game.line2[1] = current_player_sign
-    when 6
-      play_game.line2[2] = current_player_sign
-    when 7
-      play_game.line3[0] = current_player_sign
-    when 8
-      play_game.line3[1] = current_player_sign
-    when 9
-      play_game.line3[2] = current_player_sign
+      case answer
+      when 1
+        play_game.line1[0] = current_player_sign
+      when 2
+        play_game.line1[1] = current_player_sign
+      when 3
+        play_game.line1[2] = current_player_sign
+      when 4
+        play_game.line2[0] = current_player_sign
+      when 5
+        play_game.line2[1] = current_player_sign
+      when 6
+        play_game.line2[2] = current_player_sign
+      when 7
+        play_game.line3[0] = current_player_sign
+      when 8
+        play_game.line3[1] = current_player_sign
+      when 9
+        play_game.line3[2] = current_player_sign
+      end
+    
+    else
+      puts "I didn't understand your command."
     end
     
     turn += 1
