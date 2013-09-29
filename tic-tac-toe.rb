@@ -23,13 +23,15 @@ class Board
     puts "-------------".center(60)
     puts "  #{@line3[0]} | #{@line3[1]} | #{@line3[2]}  ".center(60)
   end
-  
-  def illegal_move
-    
-  end
-  
+
   def winning
-    if (@line1 || @line2 || @line3) == (['X', 'X', 'X'] || ['O', 'O', 'O'])
+    if (@line1 == ['X', 'X', 'X']) || (@line1 == ['O', 'O', 'O'])
+      @won = true
+    end
+    if (@line2 == ['X', 'X', 'X']) || (@line2 == ['O', 'O', 'O'])
+      @won = true
+    end
+    if (@line3 == ['X', 'X', 'X']) || (@line3 == ['O', 'O', 'O'])
       @won = true
     end
     if (@line1[0] == 'X') && (@line2[0] == 'X') && (@line3[0] == 'X')
@@ -202,6 +204,7 @@ def new_game
         puts "Congratulations #{current_player_name}, you won!"
         puts ''
         play_game.display
+        puts ''
       end
     end
   
