@@ -119,70 +119,73 @@ def new_game
       current_player_name = players.player2
     end
     
-    puts "#{current_player_name}, select your space:"
-    answer = gets.chomp.to_i
+    begin
+      puts "#{current_player_name}, select your space:"
+      answer = gets.chomp.to_i
     
-    unless answer.zero?
+      unless answer.zero?
   
-      case answer
-      when 1
-        if play_game.line1[0] == ('X' || 'O')
-          raise IllegalMove
-        else
-          play_game.line1[0] = current_player_sign
-        end
-      when 2
-        if play_game.line1[1] == ('X' || 'O')
-          raise IllegalMove
-        else
-          play_game.line1[1] = current_player_sign
-        end
-      when 3
-        if play_game.line1[2] == ('X' || 'O')
-          raise IllegalMove
-        else
-          play_game.line1[2] = current_player_sign
-        end
-      when 4
-        if play_game.line2[0] == ('X' || 'O')
-          raise IllegalMove
-        else
-          play_game.line2[0] = current_player_sign
-        end
-      when 5
-        if play_game.line2[1] == ('X' || 'O')
-          raise IllegalMove
-        else
-          play_game.line2[1] = current_player_sign
-        end
-      when 6
-        if play_game.line2[2] == ('X' || 'O')
-          raise IllegalMove
-        else
-          play_game.line2[2] = current_player_sign
-        end
-      when 7
-        if play_game.line3[0] == ('X' || 'O')
-          raise IllegalMove
-        else
-          play_game.line3[0] = current_player_sign
-        end
-      when 8
-        if play_game.line3[1] == ('X' || 'O')
-          raise IllegalMove
-        else
-          play_game.line3[1] = current_player_sign
-        end
-      when 9
-        if play_game.line3[2] == ('X' || 'O')
-          raise IllegalMove
-        else
-          play_game.line3[2] = current_player_sign
+        case answer
+        when 1
+          if play_game.line1[0].is_a? Integer
+            play_game.line1[0] = current_player_sign
+          else
+            raise IllegalMove
+          end
+        when 2
+          if play_game.line1[1].is_a? Integer
+            play_game.line1[1] = current_player_sign 
+          else
+            raise IllegalMove
+          end
+        when 3
+          if play_game.line1[2].is_a? Integer
+            play_game.line1[2] = current_player_sign
+          else
+            raise IllegalMove
+          end
+        when 4
+          if play_game.line2[0].is_a? Integer
+            play_game.line2[0] = current_player_sign
+          else
+            raise IllegalMove
+          end
+        when 5
+          if play_game.line2[1].is_a? Integer
+            play_game.line2[1] = current_player_sign
+          else
+            raise IllegalMove
+          end
+        when 6
+          if play_game.line2[2].is_a? Integer
+            play_game.line2[2] = current_player_sign
+          else
+            raise IllegalMove
+          end
+        when 7
+          if play_game.line3[0].is_a? Integer
+            play_game.line3[0] = current_player_sign
+          else
+            raise IllegalMove
+          end
+        when 8
+          if play_game.line3[1].is_a? Integer
+            play_game.line3[1] = current_player_sign
+          else
+            raise IllegalMove
+          end
+        when 9
+          if play_game.line3[2].is_a? Integer
+            play_game.line3[2] = current_player_sign
+          else
+            raise IllegalMove
+          end
         end
       end
     
-    else
-      puts "I didn't understand your command."
+    rescue IllegalMove => e
+      puts e.message
+      retry
     end
     
     turn += 1
