@@ -1,4 +1,4 @@
-class OccupiedError < StandardError
+class IllegalMove < StandardError
   def message
     "That space has already been played."
   end
@@ -22,6 +22,10 @@ class Board
     puts "  #{@line2[0]} | #{@line2[1]} | #{@line2[2]}  ".center(60)
     puts "-------------".center(60)
     puts "  #{@line3[0]} | #{@line3[1]} | #{@line3[2]}  ".center(60)
+  end
+  
+  def illegal_move
+    
   end
   
   def winning
@@ -122,23 +126,59 @@ def new_game
   
       case answer
       when 1
-        play_game.line1[0] = current_player_sign
+        if play_game.line1[0] == ('X' || 'O')
+          raise IllegalMove
+        else
+          play_game.line1[0] = current_player_sign
+        end
       when 2
-        play_game.line1[1] = current_player_sign
+        if play_game.line1[1] == ('X' || 'O')
+          raise IllegalMove
+        else
+          play_game.line1[1] = current_player_sign
+        end
       when 3
-        play_game.line1[2] = current_player_sign
+        if play_game.line1[2] == ('X' || 'O')
+          raise IllegalMove
+        else
+          play_game.line1[2] = current_player_sign
+        end
       when 4
-        play_game.line2[0] = current_player_sign
+        if play_game.line2[0] == ('X' || 'O')
+          raise IllegalMove
+        else
+          play_game.line2[0] = current_player_sign
+        end
       when 5
-        play_game.line2[1] = current_player_sign
+        if play_game.line2[1] == ('X' || 'O')
+          raise IllegalMove
+        else
+          play_game.line2[1] = current_player_sign
+        end
       when 6
-        play_game.line2[2] = current_player_sign
+        if play_game.line2[2] == ('X' || 'O')
+          raise IllegalMove
+        else
+          play_game.line2[2] = current_player_sign
+        end
       when 7
-        play_game.line3[0] = current_player_sign
+        if play_game.line3[0] == ('X' || 'O')
+          raise IllegalMove
+        else
+          play_game.line3[0] = current_player_sign
+        end
       when 8
-        play_game.line3[1] = current_player_sign
+        if play_game.line3[1] == ('X' || 'O')
+          raise IllegalMove
+        else
+          play_game.line3[1] = current_player_sign
+        end
       when 9
-        play_game.line3[2] = current_player_sign
+        if play_game.line3[2] == ('X' || 'O')
+          raise IllegalMove
+        else
+          play_game.line3[2] = current_player_sign
+        end
       end
     
     else
@@ -150,7 +190,7 @@ def new_game
     if turn == 9
       puts "It's a tie!"
       play_game.display
-      puts "'The only winning move is not to play at all.' -War Games"
+      puts "'The only winning move is not to play.' -War Games"
       Process.exit(0)
     
     else
