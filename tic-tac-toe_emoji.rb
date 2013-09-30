@@ -1,6 +1,6 @@
 class IllegalMove < StandardError
   def message
-    "That space has already been played."
+    "That is an invalid move."
   end
 end
 
@@ -184,6 +184,8 @@ def new_game
             raise IllegalMove
           end
         end
+      else
+        raise IllegalMove
       end
     
     rescue IllegalMove => e
