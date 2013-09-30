@@ -6,7 +6,8 @@ end
 
 class Board
   
-  attr_accessor :line1, :line2, :line3, :won
+  attr_accessor :line1, :line2, :line3
+  attr_reader :won
   
   def initialize
     @line1 = [1, 2, 3]

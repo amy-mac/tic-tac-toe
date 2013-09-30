@@ -6,7 +6,8 @@ end
 
 class Board
   
-  attr_accessor :line1, :line2, :line3, :won
+  attr_accessor :line1, :line2, :line3
+  attr_reader :won
   
   def initialize
     @line1 = [1, 2, 3]
@@ -201,7 +202,7 @@ def new_game
     else
       play_game.winning
       if play_game.won == true
-        puts "Congratulations #{current_player_name}, you won!"
+        puts "Congratulations #{current_player_name}, you won! 🏆"
         puts ''
         play_game.display
         puts ''
