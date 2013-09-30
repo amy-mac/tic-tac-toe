@@ -2,7 +2,7 @@
 
 
 ## Lab project for GA WDI
-*Created by Shindo Strzelczyk and Amy MacKinnon* <br />
+*Created by Shindo Strzelczyk and Amy MacKinnon, with enhancements by Amy* <br />
 
 The goal was to create a Tic Tac Toe game in the command line using Ruby.<br />
 
