@@ -18,11 +18,11 @@ class Board
   
   def display
     line_width = 60
-    puts "  #{@line1[0]} | #{@line1[1]} | #{@line1[2]}  ".center(60)
-    puts "-------------".center(60)
-    puts "  #{@line2[0]} | #{@line2[1]} | #{@line2[2]}  ".center(60)
-    puts "-------------".center(60)
-    puts "  #{@line3[0]} | #{@line3[1]} | #{@line3[2]}  ".center(60)
+    puts "  #{@line1[0]} | #{@line1[1]} | #{@line1[2]}  ".center(line_width)
+    puts "-------------".center(line_width)
+    puts "  #{@line2[0]} | #{@line2[1]} | #{@line2[2]}  ".center(line_width)
+    puts "-------------".center(line_width)
+    puts "  #{@line3[0]} | #{@line3[1]} | #{@line3[2]}  ".center(line_width)
   end
   
   def winning
